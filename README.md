@@ -1,22 +1,11 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/valence-rs/valence/main/assets/logo-full.svg" width="650" align="center">
-</p>
+# This is a fork of the valeance framework 
 
-<p align="center">
-    <a href="https://github.com/valence-rs/valence/blob/main/LICENSE.txt">
-        <img src="https://img.shields.io/github/license/valence-rs/valence"
-            alt="license"></a>
-    <a href="https://crates.io/crates/valence">
-      <img src="https://img.shields.io/crates/d/valence?label=crates.io"></a>
-    <a href="https://discord.gg/8Fqqy9XrYb">
-        <img src="https://img.shields.io/discord/998132822239870997?logo=discord"
-            alt="chat on Discord"></a>
-    <a href="https://github.com/sponsors/rj00a">
-        <img src="https://img.shields.io/github/sponsors/rj00a"
-            alt="GitHub sponsors"></a>
-</p>
+## Original repo can be found <a href="https://github.com/valence-rs/valence/"> here </a>
 
-**Note: Valence is currently undergoing a major rewrite. See [#596](https://github.com/valence-rs/valence/issues/596) for details.**
+## It's main purpose is organization of the 2023/24 2lo Traugutt Minecraft competition
+
+## It's intended to be production ready by 2024-04-01
+
 
 ---
 
@@ -30,8 +19,6 @@ powerful [plugin system](https://bevyengine.org/learn/book/getting-started/plugi
 Opinionated features like dynamic scripting, dedicated executables, and vanilla game mechanics are all expected to be
 built as optional plugins. This level of modularity is desirable for those looking to build highly custom experiences
 in Minecraft such as minigame servers.
-
-⚠️ **Valence is still early in development with many features unimplemented or incomplete. Expect to encounter bugs, limitations, and breaking changes.**
 
 # Goals
 
@@ -88,7 +75,7 @@ cargo r -r --example parkour
 Next, open your Minecraft client and connect to the address `localhost`.
 If all goes well you should be playing on the server.
 
-## Adding Valence as a Dependency
+## Adding Valence-Traugutt as a Dependency
 
 Valence is published to [crates.io](https://crates.io/crates/valence). Run `cargo add valence` to add it to your
 project.
@@ -98,7 +85,7 @@ However, the crates.io version is likely outdated. To use the most recent develo
 
 ```toml
 [dependencies]
-valence = { git = "https://github.com/valence-rs/valence" }
+valence = { git = "https://github.com/2lotraugutt/valence" }
 ```
 
 Documentation from the main branch is available [here](https://valence.rs/rustdoc/valence/).
