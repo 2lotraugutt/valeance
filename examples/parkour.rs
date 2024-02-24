@@ -24,6 +24,10 @@ const BLOCK_TYPES: [BlockState; 7] = [
 
 pub fn main() {
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .add_systems(
             Update,

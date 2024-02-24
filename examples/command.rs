@@ -171,6 +171,10 @@ impl Command for ComplexRedirectionCommand {
 
 pub fn main() {
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .add_command::<TestCommand>()
         .add_command::<TeleportCommand>()
@@ -458,6 +462,7 @@ fn handle_gamemode_command(
     positions: Query<&Position>,
 ) {
     for event in events.read() {
+        println!("gamemode");
         let game_mode_to_set = match &event.result {
             GamemodeCommand::Survival { .. } => GameMode::Survival,
             GamemodeCommand::Creative { .. } => GameMode::Creative,

@@ -21,6 +21,10 @@ const SPAWN_POS: DVec3 = DVec3::new(
 
 pub fn main() {
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .add_systems(
@@ -44,7 +48,10 @@ fn setup(
     mut biomes: ResMut<BiomeRegistry>,
 ) {
     for (_, _, biome) in biomes.iter_mut() {
-        biome.effects.grass_color = Some(0x00ff00);
+        biome.effects.grass_color = Some(0xffffff);
+        biome.effects.sky_color = 0x000000;
+        biome.effects.fog_color = 0x000000;
+        
     }
 
     let mut layer = LayerBundle::new(ident!("overworld"), &dimensions, &biomes, &server);
