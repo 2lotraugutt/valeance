@@ -262,7 +262,7 @@ fn parse_incoming_commands(
         debug!("Command processed: /{}", command_event.command);
 
         for node in to_be_executed {
-            println!("executing node: {:?}", node);
+            // println!("executing node: {:?}", node);
             event_writer.send(CommandProcessedEvent {
                 command: args.join(" "),
                 executor,
