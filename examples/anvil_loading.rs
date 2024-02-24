@@ -34,6 +34,10 @@ pub fn main() {
     }
 
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .insert_resource(cli)
         .add_systems(Startup, setup)
@@ -100,6 +104,7 @@ fn init_clients(
         mut fov_modifier,
     ) in &mut clients
     {
+        println!("Cleint");
         let layer = layers.single();
 
         layer_id.0 = layer;
