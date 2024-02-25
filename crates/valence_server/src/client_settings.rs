@@ -1,3 +1,5 @@
+use std::cmp::min;
+
 use bevy_app::prelude::*;
 use bevy_ecs::prelude::*;
 use valence_entity::player::{self, PlayerModelParts};
@@ -39,7 +41,7 @@ fn handle_client_settings(
             if let Ok((mut view_dist, mut settings, mut model_parts, mut main_arm)) =
                 clients.get_mut(packet.client)
             {
-                view_dist.set_if_neq(ViewDistance::new(pkt.view_distance));
+                view_dist.set_if_neq(ViewDistance::new(min(pkt.view_distance,8)));
 
                 settings.locale = pkt.locale.into();
                 settings.chat_mode = pkt.chat_mode;
