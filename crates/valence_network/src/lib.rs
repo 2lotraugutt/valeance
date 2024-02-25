@@ -345,7 +345,7 @@ pub trait NetworkCallbacks: Send + Sync + 'static {
             online_players: shared.player_count().load(Ordering::Relaxed) as i32,
             max_players: shared.max_players() as i32,
             player_sample: vec![],
-            description: "A Valence Server".into_text(),
+            description: "II LO Traugutt Minecraft Torunament".into_text(),
             favicon_png: &[],
             version_name: MINECRAFT_VERSION.to_owned(),
             protocol: PROTOCOL_VERSION,
