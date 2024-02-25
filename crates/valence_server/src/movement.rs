@@ -196,9 +196,9 @@ fn handle(
     }
 
     // Antyflight
-    if !(on_ground.0) && mov.position.y - pos.y > 0.0 {
-        return;
-    }
+    // if !(on_ground.0) && mov.position.y - pos.y > 0.0 {
+    //     return;
+    // }
     // TODO: check that the client isn't moving too fast / flying.
     // TODO: check that the client isn't clipping through blocks.
 
