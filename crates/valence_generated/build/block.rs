@@ -23,6 +23,8 @@ struct Block {
     properties: Vec<Property>,
     default_state_id: u16,
     states: Vec<State>,
+    walled: Option<bool>,
+    inverted_rotation: Option<u8>,
 }
 
 impl Block {
@@ -79,7 +81,23 @@ pub fn build() -> anyhow::Result<TokenStream> {
     } = serde_json::from_str(include_str!("../extracted/blocks.json"))?;
 
     let max_state_id = blocks.iter().map(|b| b.max_state_id()).max().unwrap();
-
+    
+    let is_walled_arms = blocks
+        .iter().map(|b| {
+            let kind = ident(b.name.to_pascal_case());
+            let walled = b.walled.unwrap_or(false);
+            quote! {
+                BlockKind::#kind => #walled, 
+            }
+        }).collect::<TokenStream>();
+    let inverted_rotation_arms = blocks 
+        .iter().map(|b| {
+            let kind = ident(b.name.to_pascal_case());
+            let inv_rot = b.inverted_rotation.unwrap_or(0);
+            quote! {
+                BlockKind::#kind => #inv_rot, 
+            }
+        }).collect::<TokenStream>();
     let kind_to_translation_key_arms = blocks
         .iter()
         .map(|b| {
@@ -653,6 +671,20 @@ pub fn build() -> anyhow::Result<TokenStream> {
                 match self.to_kind() {
                     #set_arms
                     _ => self,
+                }
+            }
+            /// Checks if block is only placable on wall
+            pub const fn is_walled(&self)  -> bool {
+                match self.to_kind() {
+                    #is_walled_arms
+                }
+            }
+            
+            /// Minecraft is incocsistant in it's block rotation
+            /// this function is a crude attemtpt to fix it.
+            pub const fn get_rotation_inversion(&self)  -> u8 {
+                match self.to_kind() {
+                    #inverted_rotation_arms
                 }
             }
 
