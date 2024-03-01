@@ -673,6 +673,7 @@ pub fn build() -> anyhow::Result<TokenStream> {
                     _ => self,
                 }
             }
+
             /// Checks if block is only placable on wall
             pub const fn is_walled(&self)  -> bool {
                 match self.to_kind() {

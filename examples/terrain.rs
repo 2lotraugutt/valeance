@@ -164,6 +164,7 @@ fn update_client_views(
     for (client, view, old_view) in &mut clients {
         let view = view.get();
         let queue_pos = |pos: ChunkPos| {
+            println!("quing position {} {}", pos.x ,pos.z);
             if layer.chunk(pos).is_none() {
                 match state.pending.entry(pos) {
                     Entry::Occupied(mut oe) => {
@@ -182,8 +183,10 @@ fn update_client_views(
 
         // Queue all the new chunks in the view to be sent to the thread pool.
         if client.is_added() {
+            println!("New Client");
             view.iter().for_each(queue_pos);
         } else {
+            println!("Old Client at {} {}", view.pos.x, view.pos.z);
             let old_view = old_view.get();
             if old_view != view {
                 view.diff(old_view).for_each(queue_pos);

@@ -11,6 +11,10 @@ const SKULL_POS: BlockPos = BlockPos::new(3, FLOOR_Y + 1, 3);
 
 pub fn main() {
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .add_systems(
