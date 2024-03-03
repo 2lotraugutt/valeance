@@ -6,6 +6,10 @@ use valence_server::nbt::{compound, List};
 
 pub fn main() {
     App::new()
+        .insert_resource(NetworkSettings {
+            connection_mode: ConnectionMode::Offline,
+            ..Default::default()
+        })
         .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .add_systems(

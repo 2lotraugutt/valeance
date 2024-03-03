@@ -53,7 +53,7 @@ fn setup(
     commands.spawn(layer);
 
     let inventory = Inventory::with_title(
-        InventoryKind::Generic9x3,
+        InventoryKind::Crafting,
         "Extra".italic() + " Chesty".not_italic().bold().color(Color::RED) + " Chest".not_italic(),
     );
 
